@@ -1,0 +1,11 @@
+let wpUrl = 'http://YOURSITE/wp-json';
+
+
+const Config = {
+  apiUrl: wpUrl,
+  // the following is for local storage field
+  AUTH_TOKEN: 'auth-token',
+  USERNAME: 'username',
+};
+
+export default Config;

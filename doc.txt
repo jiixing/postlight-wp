@@ -1,0 +1,11 @@
+
+#to deploy on server after change
+
+git reset --hard
+git pull
+
+yarn run build
+
+./stop
+./start
+

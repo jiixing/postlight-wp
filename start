@@ -1,0 +1,15 @@
+#!/bin/bash
+export TMPDIR=/home/wptest/apps/postlight/tmp
+mkdir -p /home/wptest/apps/postlight/tmp
+PIDFILE="/home/wptest/apps/postlight/tmp/node.pid"
+NODE=/bin/node
+
+if [ -e "$PIDFILE" ] && (pgrep -u wptest | grep -x -f $PIDFILE &> /dev/null); then
+  echo "Node.js for postlight already running."
+  exit 99
+fi
+
+cd /home/wptest/apps/postlight
+/usr/sbin/daemonize -c /home/wptest/apps/postlight -e ~/logs/apps/postlight/node_error.log -o ~/logs/apps/postlight/node_output.log -p $PIDFILE $NODE server.js
+
+echo "Started Node.js for postlight."

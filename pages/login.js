@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import PageWrapper from '../components/PageWrapper';
 import Menu from '../components/Menu';
 import Config from '../config';
+let plugin='simple-jwt-authentication'  //jwt-auth doesn't work
 
 class Login extends Component {
   state = {
@@ -22,7 +23,7 @@ class Login extends Component {
     this.setState({ message });
     const { username, password } = this.state;
     axios
-      .post(`${Config.apiUrl}/jwt-auth/v1/token`, {
+      .post(`${Config.apiUrl}/${plugin}/v1/token`, {
         username,
         password,
       })

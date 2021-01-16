@@ -39,8 +39,7 @@ class Menu extends Component {
               <a className="starter-kit-logo">
                 <Logo width={48} height={32}/>
                 <div className="pl2">
-                  WordPress + React<br/>
-                  Starter Kit
+                  WP React
                 </div>
               </a>
             </Link>

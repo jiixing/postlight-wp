@@ -52,7 +52,7 @@ class Index extends Component {
     return null;
   }
 
-  componentDidMountX() {
+  componentDidMount() {
     const token = localStorage.getItem(Config.AUTH_TOKEN);
     if (token) {
       wp.setHeaders('Authorization', `Bearer ${token}`);
@@ -109,20 +109,10 @@ class Index extends Component {
         <Menu menu={headerMenu} />
         <div className="intro bg-black white ph3 pv4 ph5-m pv5-l flex flex-column flex-row-l">
           <div className="color-logo w-50-l mr3-l">
-            <Logo width={440} height={280} />
+            <Logo width={110} height={70} />
           </div>
           <div className="subhed pr6-l">
             <h1>{page.title.rendered}</h1>
-            <div className="dek">
-              You are now running a WordPress backend with a React frontend.
-            </div>
-            <div className="api-info b mt4">
-              Starter Kit supports both REST API and GraphQL
-              <div className="api-toggle">
-                <a className="rest" href="http://localhost:3000">REST API</a>
-                <a className="graphql" href="http://localhost:3001">GraphQL</a>
-              </div>
-            </div>
           </div>
         </div>
         <div className="recent flex mh4 mv4 w-two-thirds-l center-l">
@@ -147,19 +137,3 @@ class Index extends Component {
 }
 
 export default PageWrapper(Index);
-
-// export default Index
-
-// export default function Home() {
-//   return (
-//     <div className="container">
-//       test index
-//     </div>
-//   )
-// }
-
-// export default class Index2 extends Component {
-//   render() {
-//     return (<div>claszz iodnex</div>)
-//   }
-// }

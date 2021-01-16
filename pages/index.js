@@ -26,6 +26,8 @@ const tokenExpired = () => {
 class Index extends Component {
   state = {
     id: '',
+    userName:'',
+    privatePosts:[]
   };
 
   static async getInitialProps() {
@@ -60,20 +62,23 @@ class Index extends Component {
         .me()
         .then(data => {
           const { id } = data;
-          this.setState({ id });
+          this.setState({ id,userName:data.name });
         })
         .catch(err => {
           if (err.data.status === 403) {
             tokenExpired();
           }
         });
+
+      wp.posts().status('private').then(posts=>this.setState({privatePosts:posts}))
+
     }
   }
 
   render() {
-    const { id } = this.state;
+    const { id ,privatePosts,userName } = this.state;
     const { posts, pages, headerMenu, page } = this.props;
-    const fposts = posts.map(post => {
+    let postToJsx = post => {
       return (
         <ul key={post.slug}>
           <li>
@@ -86,7 +91,9 @@ class Index extends Component {
           </li>
         </ul>
       );
-    });
+    };
+    const fposts = posts.map(postToJsx);
+    let fprivateposts =privatePosts.map(postToJsx)
     const fpages = pages.map(ipage => {
       if (ipage.slug !== 'welcome') {
         return (
@@ -119,6 +126,9 @@ class Index extends Component {
           <div className="w-50 pr3">
             <h2>Posts</h2>
             {fposts}
+
+            {userName && ( <h2>{userName} Content</h2>)}
+            {userName && fprivateposts}
           </div>
           <div className="w-50 pl3">
             <h2>Pages</h2>

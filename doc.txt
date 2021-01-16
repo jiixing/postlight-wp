@@ -1,11 +1,11 @@
 
 #to deploy on server after change
+source stop
 
 git reset --hard
 git pull
 
 yarn run build
 
-./stop
-./start
+source start
 

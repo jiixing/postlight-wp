@@ -3,6 +3,7 @@ export TMPDIR=/home/wptest/apps/postlight/tmp
 mkdir -p /home/wptest/apps/postlight/tmp
 PIDFILE="/home/wptest/apps/postlight/tmp/node.pid"
 NODE=/bin/node
+export NODE_ENV=production
 
 if [ -e "$PIDFILE" ] && (pgrep -u wptest | grep -x -f $PIDFILE &> /dev/null); then
   echo "Node.js for postlight already running."

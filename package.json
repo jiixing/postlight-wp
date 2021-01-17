@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "next build",
+    "build": "NODE_ENV=production next build",
     "dev": "next",
     "start": "CHOKIDAR_USEPOLLING=true node server.js"
   },
